@@ -22,6 +22,7 @@
 // Include custom libraries
 #include "helpers.c"
 #include "movement_atomic.c"
+#include "movement_highlevel.c"
 
 // ---- MAIN CONTROL
 
