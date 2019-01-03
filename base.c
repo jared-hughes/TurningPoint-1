@@ -19,7 +19,9 @@
 
 #include "Vex_Competition_Includes.c"
 
+// Include custom libraries
 #include "helpers.c"
+#include "movement_atomic.c"
 
 // ---- MAIN CONTROL
 
