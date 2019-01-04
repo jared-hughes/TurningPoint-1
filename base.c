@@ -19,6 +19,17 @@
 
 #include "Vex_Competition_Includes.c"
 
+// main controller
+#define leftDriveJoystick vexRT[Ch3]
+#define rightDriveJoystick vexRT[Ch4]
+#define clawButton vexRT[Btn7U]
+#define armJoystick vexRT[Ch2]
+// partner (add Xmtr2 to end of name for partner joystick)
+#define conveyorUpButton vexRT[Btn6UXmtr2]
+#define conveyorDownButton vexRT[Btn6DXmtr2]
+#define flywheelButton vexRT[Btn8UXmtr2]
+
+
 // Include custom libraries
 #include "helpers.c"
 #include "movement_atomic.c"

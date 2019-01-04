@@ -82,11 +82,11 @@ void doDrive()
 void doConveyor()
 {
     // buttons 6U and 6D move conveyor up and down
-    if (vexRT[Btn6U])
+    if (conveyorUpButton)
     {
         moveConveyor(127);
     }
-    else if (vexRT[Btn6D])
+    else if (conveyorDownButton)
     {
         moveConveyor(-127);
     }
@@ -101,7 +101,7 @@ void doConveyor()
 void doFlywheel()
 {
     // button 8U runs flywheel
-    if (vexRT[Btn8U])
+    if (flywheelButton)
     {
         moveFlywheel(60);
     }
@@ -116,7 +116,7 @@ void doFlywheel()
 void doArms()
 {
     // Right joystick (ch2) controls arms
-    int speed = deDead(vexRT[Ch2]);
+    int speed = deDead(vexRT[armJoystick]);
     moveArms(speed);
 }
 
@@ -134,12 +134,12 @@ void flipClaw()
     moveClaw(0);
 }
 
-/*void doClaw() {
+void doClaw() {
 	/* Button 7U to flip the claw 180 deg
 	 * Buttons 5U and 5D move claw back and forth
-
+	 */
 	// for flipping 180
-	bool currentClawButtonValue = vexRT[Btn7U] ? true : false;
+	bool currentClawButtonValue = clawButton ? true : false;
 	if (currentClawButtonValue && !lastClawButtonValue) {
 		flipClaw();
 	}
@@ -154,4 +154,3 @@ void flipClaw()
 		moveClaw(0);
 	}
 }
-*/
