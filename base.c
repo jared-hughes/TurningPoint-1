@@ -33,7 +33,9 @@
 // Include custom libraries
 #include "helpers.c"
 #include "movement_atomic.c"
+#include "claw.c"
 #include "movement_highlevel.c"
+#include "movement_controlled.c"
 
 // ---- MAIN CONTROL
 
@@ -81,42 +83,23 @@ task autonomous()
 
 task usercontrol()
 {
-	//fliperoonie with the potentiometer
-	while (true)
+	// testing out durations
+	// change the time inside waitMS directly after TOCALIBRATE comments
+	if (vexRT[Btn8D])
 	{
-		if (vexRT[Btn5D])
-		{
-			while (SensorValue[clawPot] < 2700)
-			{
-				motor[clawFlip] = -127;
-			}
-			motor[clawFlip] = 0;
-		}
-		else if (vexRT[Btn5U])
-		{
-			while (SensorValue[clawPot] > 1000)
-			{
-				motor[clawFlip] = 127;
-			}
-			motor[clawFlip] = 0;
-		}
-		// testing out durations
-		// change the time inside waitMS directly after TOCALIBRATE comments
-		if (vexRT[Btn8D])
-		{
-			driveDistance(24);
-		}
-		if (vexRT[Btn8R])
-		{
-			rotateAngle(360);
-		}
-		if (vexRT[Btn8L])
-		{
-			flipClaw();
-		}
-		doDrive();
-		doArms();
-		doConveyor();
-		doFlywheel();
+		driveDistance(24);
 	}
+	if (vexRT[Btn8R])
+	{
+		rotateAngle(360);
+	}
+	if (vexRT[Btn8L])
+	{
+		flipClaw();
+	}
+	doClaw();
+	doDrive();
+	doArms();
+	doConveyor();
+	doFlywheel();
 }

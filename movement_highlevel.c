@@ -1,5 +1,3 @@
-#include "movement_atomic.c"
-
 // ---- MOVE: advanced movement (autom helpers)
 
 // drive
@@ -30,4 +28,40 @@ void driveStraight(int speed)
 void stopDriving()
 {
     moveDrive(0, 0);
+}
+
+void shoot(int flag, int distanceFromBase)
+{
+    // 3 for top flag, 2 for middle flag
+    int dx = distanceFromBase;
+    int dy;
+    if (flag == 3)
+    {
+        dy = 46;
+    }
+    else if (flag == 2)
+    {
+        dy = 32;
+    }
+    // TODO: now do some physics and speed curve to determine motor control
+}
+
+void driveDistance(int distance)
+{
+    // calibrate so distance is in inches (1/24 of tile)
+    driveStraight(sgn(distance) * 60);
+    // TOCALIBRATE
+    waitMS(abs(distance) * 10);
+    stopDriving();
+}
+
+int angleMultiplier = 1;
+void rotateAngle(int angle)
+{
+    // calibrate so angle is in degrees
+    // positive --> clockwise
+    // TOCALIBRATE
+    rotateInPlace(sgn(angle) * 60);
+    waitMS(abs(angle) * 10);
+    stopDriving();
 }
